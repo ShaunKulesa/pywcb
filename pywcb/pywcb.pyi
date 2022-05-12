@@ -76,7 +76,7 @@ def real(entry):
 
 def fixed(entry, decimal_places):
     """
-    This function limits the amount of decimal places to be inserted after the "." dot of a float number into the Entry widget.
+    Only allows float numbers with a certain number of decimal places to be inserted into the Entry widget.
 
     args:
         entry - The Entry widget to apply the validation to.
