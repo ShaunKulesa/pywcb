@@ -16,7 +16,7 @@ def lowercase(entry):
 
 def alphabetic(entry):
     """
-    Only allows alphabetic characters to be inputted into the Entry widget.
+    Only allows alphabetic characters to be inserted into the Entry widget.
 
     args:
         entry - The Entry widget to apply the validation to.
@@ -24,7 +24,7 @@ def alphabetic(entry):
 
 def alphanumeric(entry):
     """
-    Only allows alphanumeric characters to be inputted into the Entry widget.
+    Only allows alphanumeric characters to be inserted into the Entry widget.
 
     args:
         entry - The Entry widget to apply the validation to.
@@ -32,7 +32,7 @@ def alphanumeric(entry):
 
 def numeric(entry):
     """
-    Only allows numeric characters to be inputted into the Entry widget.
+    Only allows numeric characters to be inserted into the Entry widget.
 
     args:
         entry - The Entry widget to apply the validation to.
@@ -40,7 +40,7 @@ def numeric(entry):
 
 def integer(entry):
     """
-    Only allows intergers to be inputted into the Entry widget.
+    Only allows intergers to be inserted into the Entry widget.
 
     args:
         entry - The Entry widget to apply the validation to.
@@ -48,17 +48,17 @@ def integer(entry):
 
 def maxinteger(entry, maxint):
     """
-    Only allows the max sized interger to be inputted into the Entry widget.
+    Only allows a certainly sized interger to be inserted into the Entry widget.
 
     args:
         entry - The Entry widget to apply the validation to.
             
-        maxint - The max sized integer to allow.
+        maxint - The maximum sized integer to be allowed.
     """
 
 def length(entry, maxlen):
     """
-    Only allows the the max length to be inputted into the Entry widget.
+    Only allows a certain length to be inserted into the Entry widget.
 
     args:
         entry - The Entry widget to apply the validation to.
@@ -68,7 +68,7 @@ def length(entry, maxlen):
 
 def real(entry):
     """
-    Only allows real numbers to be inputted into the Entry widget.
+    Only allows real numbers to be inserted into the Entry widget.
 
     args:
         entry - The Entry widget to apply the validation to.
@@ -76,22 +76,22 @@ def real(entry):
 
 def fixed(entry, decimal_places):
     """
-    This allows you to use fixed amount of decimal places to be inputted into the Entry widget.
+    This function limits the amount of decimal places to be inserted after the "." dot of a float number into the Entry widget.
 
     args:
         entry - The Entry widget to apply the validation to.
 
-        decimal_places - The amount of decimal places to allow.
+        decimal_places - The amount of decimal places to be allowed.
     """
 
 def combined(entry, *conditions):
     """
-    This allows you to use multiple conditions at once. 
+    This function allows for multiple conditions to be combined and used together. 
 
     args:
         entry - The Entry widget to apply the validation to.
 
-        conditions - The conditions to apply for the validation. For example pywcb.upper and pywcb.alnum
+        conditions - The conditions to be applied for the validation. For example pywcb.upper and pywcb.alnum
     
     examples:
     ```
