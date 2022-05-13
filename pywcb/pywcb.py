@@ -38,7 +38,7 @@ class uppercase(Callback):
         self.get_parent()
         self.create_callback(f"wcb::callback {self.entry} before insert {self.command}")
 
-class lower(Callback):
+class lowercase(Callback):
     command = "wcb::convStrToLower"
 
     def __init__(self, entry):
@@ -47,111 +47,73 @@ class lower(Callback):
         self.get_parent()
         self.create_callback(f"wcb::callback {self.entry} before insert {self.command}")
 
-class alpha(Callback):
+class alphabetic(Callback):
     command = "wcb::checkStrForAlpha"
 
     def __init__(self, entry):
-        """
-        Only allows alphabetic characters to be inputted into Entry and Text entrys
-        """
        
         super().__init__()
         self.entry = entry
         self.get_parent()
-        self.create_callback(f"wcb::callback {self.entry} before insert wcb::checkStrForAlpha")
+        self.create_callback(f"wcb::callback {self.entry} before insert {self.command}")
 
-class alnum(Callback):
+class alphanumeric(Callback):
     command = "wcb::checkStrForAlnum"
 
     def __init__(self, entry):
-        """
-        Only allows alphanumeric characters to be inputted into Entry and Text entrys
-        """
 
         super().__init__()
         self.entry = entry
         self.get_parent()
-        self.create_callback(f"wcb::callback {self.entry} before insert wcb::checkStrForAlnum")
+        self.create_callback(f"wcb::callback {self.entry} before insert {self.command}")
 
-class num(Callback):
-    command = "wcb::checkStrForNum"
-
-    def __init__(self, entry, case="Lower"):
-        """
-        Only allows numeric characters to be inputted into Entry and Text entrys
-        """
-    
-        super().__init__()
-        self.entry = entry
-        self.get_parent()
-        self.create_callback(f"wcb::callback {self.entry} before insert wcb::checkStrForNum")
-
-class int(Callback):
+class integer(Callback):
     command = "wcb::checkEntryForInt"
 
     def __init__(self, entry):
-        """
-        Only allows intergers to be inputted into Entry entrys
-        """
 
         super().__init__()
         self.entry = entry
         self.get_parent()
-        self.create_callback(f"wcb::callback {self.entry} before insert wcb::checkEntryForInt")
+        self.create_callback(f"wcb::callback {self.entry} before insert {self.command}")
 
-class uint(Callback):
+class maxinteger(Callback):
     command = "wcb::checkEntryUInt"
 
-    def __init__(self, entry, max):
-        """
-        Only allows the max sized interger to be inputted into Entry entrys
-        """
+    def __init__(self, entry, maxint):
 
         super().__init__()
         self.entry = entry
         self.get_parent()
-        max = "{" + "wcb::checkEntryForUInt " + str(max)  + "}"
-        self.create_callback(f"wcb::callback {self.entry} before insert {max}")
+        self.create_callback(f"wcb::callback {self.entry} before insert {{{self.command} {maxint}}}")
 
-class len(Callback):
+class length(Callback):
     command = "wcb::checkEntryLen"
 
-    def __init__(self, entry, len):
-        """
-        Only allows the max length to be inputted into Entry entrys
-        """
+    def __init__(self, entry, maxlen):
 
         super().__init__()
         self.entry = entry
         self.get_parent()
-        self.create_callback(f"wcb::callback {self.entry} before insert {{{self.command} {len}}}")
+        self.create_callback(f"wcb::callback {self.entry} before insert {{{self.command} {maxlen}}}")
 
 class real(Callback):
     command = "wcb::checkEntryReal"
 
     def __init__(self, entry):
-        """
-        Only allows real numbers to be inputted into Entry entrys
-        """
-
         super().__init__()
         self.entry = entry
         self.get_parent()
-        self.create_callback(f"wcb::callback {self.entry} before insert wcb::checkEntryForReal")
+        self.create_callback(f"wcb::callback {self.entry} before insert {self.command}")
 
 class fixed(Callback):
     command = "wcb::checkEntryForFixed"
 
-    def __init__(self, entry, max):
-        """
-        Only allows fixed numbers to be inputted into Entry entrys
-        """
-            
+    def __init__(self, entry, max):            
         super().__init__()
         self.entry = entry
         self.get_parent()
-        max = "{" + "wcb::checkEntryForFixed " + str(max)  + "}"
-        self.create_callback(f"wcb::callback {self.entry} before insert {max}")
+        self.create_callback(f"wcb::callback {self.entry} before insert {{{self.command} {max}}}")
 
 class combined(Callback):
     def __init__(self, entry, *args):            
@@ -161,7 +123,7 @@ class combined(Callback):
         args = list(args)
 
         for arg in args:
-            args[args.index(arg)] = (arg.__dict__["command"])
+            args[args.index(arg)] = arg.command
         
         args = (' '.join(args))
 
